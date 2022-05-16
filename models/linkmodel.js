@@ -1,14 +1,14 @@
-module.exports = (selquelize, Sequelize) => {
-  const Links = selquelize.define(
-    "links",
+export default (sequelize, DataTypes) => {
+  const Url = sequelize.define(
+    "url",
     {
       originalurl: {
-        type: Sequelize.SRING,
-        allowNull: false
+        type: DataTypes.STRING,
+        unique: true
       },
       shorturl: {
-        type: Sequelize.SRING,
-        allowNull: false
+        type: DataTypes.STRING,
+        unique: true
       }
     },
     {
@@ -18,5 +18,5 @@ module.exports = (selquelize, Sequelize) => {
     }
   );
 
-  return Links;
+  return Url;
 };
