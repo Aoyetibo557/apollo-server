@@ -1,13 +1,15 @@
-export default (sequelize, DataTypes) => {
+module.exports = (sequelize, Sequelize) => {
   const Url = sequelize.define(
     "url",
     {
       originalurl: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
+        allowNull: false,
         unique: true
       },
       shorturl: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
+        allowNull: false,
         unique: true
       }
     },

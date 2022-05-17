@@ -1,4 +1,4 @@
-const { gql } = require("apollo-server");
+const { gql } = require("apollo-server-express");
 
 // Construct a schema, using GraphQL schema language
 const typeDefs = gql`
@@ -9,17 +9,18 @@ const typeDefs = gql`
 
   type Url {
     originalUrl: String
-    shortUrl: [ShortLink]
+    shortUrl: String
   }
 
+  #queries
   type Query {
-    getAllUrls: [Url]
-    getSingleUrl(originalUrl: String!): Url!
+    getAllUrl: [Url!]!
+    # getSingleUrl(originalUrl: String!): Url!
   }
 
   type Mutation {
-    createNewShortLink(originalUrl: String!): Url
+    createNewShortLink(originalUrl: String!): Url!
   }
 `;
 
-module.exports = typeDefs;
+module.exports = { typeDefs };
