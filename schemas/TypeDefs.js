@@ -2,12 +2,8 @@ const { gql } = require("apollo-server-express");
 
 // Construct a schema, using GraphQL schema language
 const typeDefs = gql`
-  type ShortLink {
-    url: String!
-    slug: String!
-  }
-
   type Url {
+    slug: String
     originalUrl: String
     shortUrl: String
   }
@@ -15,7 +11,7 @@ const typeDefs = gql`
   #queries
   type Query {
     getAllUrl: [Url!]!
-    # getSingleUrl(originalUrl: String!): Url!
+    getSingleUrl(slug: String): Url! #get a single url by the slug
   }
 
   type Mutation {
